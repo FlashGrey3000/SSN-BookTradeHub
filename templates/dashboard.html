@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../static/dashboardstyles.css">
+</head>
+<body>
+    <div class="header">
+        <p>Dashboard</p>
+        <ul>
+            <li><a href="{{ url_for('hub') }}">Book hub</a></li>
+            <li><a href="{{ url_for('mybooks') }}">My books</a></li>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('logout') }}">logout🚪➡️</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <h1>WELCOME </h1>
+        <h1>{{ username }}</h1>
+    </div>
+
+    
+
+</body>
+</html>

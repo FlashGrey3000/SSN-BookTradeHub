@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Trade Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <div class="header">
+        <a href="{{ url_for('home') }}"><img src="../static/images/BTH-logo.svg" alt="logo"></a>
+        <ul class="navbar">
+            <li><a href="{{url_for('home')}}">About</a></li>
+            <li><a href="{{url_for('contact')}}">Contact</a></li>
+            <li><a href="{{url_for('signup')}}">Sign Up</a></li>
+            <li><a href="{{url_for('login')}}">Login</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <h1 class="welcome">Welcome to SSN Book Trade Hub</h1>
+        <div class="message">
+            <p> <span class="msg1"> Hello fellow readers from SSN/SNUC </span> <br> <br>
+                Have books that you don't need anymore? <br>
+                Can't find people who are interested in the book? <br>
+                Fret not! for you have come to the right page. Here at the Book Trade Hub (BTH) we encourage trading your books for other books from other people around you.</p>
+        </div>
+        <p class="quote">"what matters in life is not only the knowledge you have but also the kindness you show"</p>
+        <div class="startbutton"><a href="{{url_for('signup')}}"><button class="trybtn" type="button">Start Now</button></a></div>
+    </div>
+
+
+</body>
+</html>

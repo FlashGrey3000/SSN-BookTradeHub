@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../static/mybooksstyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="header">
+        <p>Dashboard</p>
+        <ul>
+            <li><a href="{{ url_for('hub') }}">Book hub</a></li>
+            <li><a href="{{ url_for('mybooks') }}">My books</a></li>
+            <li><a href="{{ url_for('home')}}">Home</a></li>
+            <li><a href="{{ url_for('logout')}}">logout🚪➡️</a></li>
+        </ul>
+    </div>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="main">
+        <div class="table-cover">
+            {% if user_books %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>BookID</th>
+                            <th>Book</th>
+                            <th>Genre</th>
+                            <th>Trades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in user_books %}
+                            <tr>
+                                <td> {{book.id}} </td>
+                                <td>
+                                    <div class="book-details">
+                                        {% if book.bookimg %}
+                                            <img class="bookimages" src="data:image/png;base64,{{ book.bookimg|b64encode|b64_codec }}" alt="Book Image">
+                                        {% endif %}
+                                        <div class="main-info">
+                                            <p class="title_auth">{{book.title}} <br>by <span class="author">{{book.author}}</span></p>
+                                            <p class="usn">Uploaded by {{book.uploadedby}}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="genre"> {{book.genre}} </td>
+                                <td class="trade-details"> {{book.tradeinfo}} </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="nobooks">
+                    <h1>No books added :p</h1>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="funcblock">
+            <div class="functionline">
+                <div class="fbtn"><button id="addBookBtn" class="fbtnbtn" type="button"><i class="material-icons" style="font-size: 20px;">add</i> &nbsp;| Add book</button></div>
+                <div class="fbtn"><button id="remBookBtn" class="fbtnbtn" type="button"><i class="material-icons" style="font-size: 20px;">close</i> | Remove book</button></div>
+            </div>
+        </div>
+        <div class="formblock">
+            <form action="{{ url_for('mybooks') }}" method="post" id="addBookForm" enctype="multipart/form-data">
+                <div class="input-box"><label for="title">Title:</label><input name="title" type="text" required></div>
+                <div class="input-box"><label for="author">Author:</label><input name="author" type="text" required></div>
+                <div class="input-box"><label for="Genre">Genre:</label><select name="genre" required>
+                    <option value="other">Others</option>
+                    <option value="novel">Novel</option>
+                    <option value="scifi">Sci-Fi</option>
+                    <option value="academic">Academic</option>
+                    <option value="horror">Horror</option>
+                    <option value="romance">Romance</option>
+                    <option value="biography">Biography</option>
+                    <option value="autobiography">Autobiography</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="selfhelp">Self Help</option>
+                </select></div>
+                <div class="input-box"><label for="image">Upload book image:</label><input type="file" name="image" id="imgfile" accept="image/*" required></div>
+                <div class="sbmtbtn"><input type="submit" value="Add book"></div>
+            </form>
+        </div>
+        <div class="formblock">
+            <form action="{{ url_for('remove_book') }}" method="post" id="remBookForm" enctype="multipart/form-data">
+                <div class="input-box"><label for="bookid">Enter book ID: </label><input name="bookid" type="text" required></div>
+                <div class="sbmtbtn"><input type="submit" value="remove book"></div>
+            </form>
+        </div>
+
+
+    </div>
+
+    
+<script>
+    var form = document.getElementById('addBookForm');
+    var addBookBtn = document.getElementById('addBookBtn');
+    var form2 = document.getElementById('remBookForm');
+    var remBookBtn = document.getElementById('remBookBtn');
+
+    addBookBtn.addEventListener('click', function() {
+        form.classList.toggle('show');
+        console.log('clicks')
+    });
+    remBookBtn.addEventListener('click', function() {
+        form2.classList.toggle('show');
+        console.log('clicks')
+    });
+</script>
+</body>
+</html>
