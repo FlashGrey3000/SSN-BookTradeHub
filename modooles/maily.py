@@ -2,6 +2,7 @@ import smtplib
 from email.message import EmailMessage
 
 OWNER = 'YOUR EMAIL'
+PASSWORD = 'XXXX XXXX XXXX XXX'
 
 def send_mailTo(emailID):
     content = EmailMessage()
@@ -10,7 +11,7 @@ def send_mailTo(emailID):
     content["To"]=emailID
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login(OWNER, 'XXXX XXXX XXXX XXXX') #Your password
+    s.login(OWNER, PASSWORD) #Your password
     content.set_content('Thank you for registering with SSN Book Trade Hub!\nStart trading your books with your fellow college peers! Interact with all types of readers. Whether the book be academic or a light-novel we welcome everyone!')
     s.send_message(content)
     s.quit()
@@ -48,7 +49,7 @@ Please note: This is an automated email. Do not reply directly to this message. 
     content["To"]=emailID
     s = smtplib.SMTP('smtp.gmail.com', 587)
     s.starttls()
-    s.login(OWNER, 'XXXX XXXX XXXX XXXX') #Your password
+    s.login(OWNER, PASSWORD) #Your password
     content.set_content(body)
     s.send_message(content)
     s.quit()

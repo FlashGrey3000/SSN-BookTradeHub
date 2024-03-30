@@ -4,8 +4,7 @@ from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from modooles import maily
 import base64
-from PIL import Image
-from io import BytesIO
+
 
 app = Flask(__name__)
 
