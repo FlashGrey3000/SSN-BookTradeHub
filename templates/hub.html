@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../static/css/hubstyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <div class="header">
+        <p>Dashboard</p>
+        <ul>
+            <li><a href="{{ url_for('hub') }}">Book hub</a></li>
+            <li><a href="{{ url_for('mybooks') }}">My books</a></li>
+            <li><a href="{{ url_for('home')}}">Home</a></li>
+            <li><a href="{{ url_for('logout')}}">logout🚪➡️</a></li>
+        </ul>
+    </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="main">
+        <div class="table-cover">
+            {% if all_books %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>BookID</th>
+                            <th>Book</th>
+                            <th>Genre</th>
+                            <th>Trades</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in all_books %}
+                            <tr>
+                                <td> {{book.id}} </td>
+                                <td>
+                                    <div class="book-details">
+                                        {% if book.bookimg %}
+                                            <img class="bookimages" src="data:image/png;base64,{{ book.bookimg|b64encode|b64_codec }}" alt="Book Image">
+                                        {% endif %}
+                                        <div class="main-info">
+                                            <p class="title_auth">{{book.title}} <br>by <span class="author">{{book.author}}</span></p>
+                                            <p class="usn">Uploaded by {{book.uploadedby}}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="genre"> {{book.genre}} </td>
+                                <td class="trade-details"> {{book.tradeinfo}} </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="nobooks">
+                    <h1>No books added :p</h1>
+                </div>
+            {% endif %}
+        </div>
+        <!-- <div class="funcblock">
+            <div class="functionline">
+                <div class="fbtn"><button id="addTradeBtn" class="fbtnbtn" type="button"><i class="material-symbols-outlined" style="font-size: 20px;">sync</i>| Trade</button></div>
+            </div>
+        </div> -->
+        <!-- <div class="formblock">
+            <form action="{{ url_for('add_trade') }}" method="post" id="addTradeForm" enctype="multipart/form-data">
+                <div class="input-box"><label for="bookid">Enter book ID: </label><input name="bookid" type="text" required></div>
+                <div class="sbmtbtn"><input type="submit" value="add trade"></div>
+            </form>
+        </div> -->
+    </div>
+
+    
+    <script>
+        var form = document.getElementById('addTradeForm');
+        var addTradeBtn = document.getElementById('addTradeBtn');
+        
+        addTradeBtn.addEventListener('click', function() {
+            form.classList.toggle('show');
+            console.log('clicks')
+        });
+    </script>
+</body>
+</html>

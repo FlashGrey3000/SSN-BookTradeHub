@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap');
+
+:root {
+    --orange-color: rgb(255, 179, 0);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+body {
+    background-color: chocolate;
+}
+
+.header {
+    display: flex;
+    background: rgba(200, 200, 200, 0.5);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: space-between;
+    height: 6.5em;
+}
+
+ul {
+    display: inline-flex;
+}
+
+li {
+    display: inline;
+    padding-left: 15px;
+}
+
+li > a {
+    color: var(--orange-color);
+    text-shadow: 2px 2px 2px black;
+    font-family: system-ui;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.header p {
+    margin-left: 30px;
+    font-size: 48px;
+}
+
+.main {
+    width: 100%;
+}
+
+.main h1 {
+    color: white;
+    font: 10em 'Verdana';
+}
+.main h1 {
+    animation: slidedown ease-out 1s;
+    text-align: right;
+}
+
+@keyframes slidedown {
+    from {
+        margin-top: -100%;
+    }
+    to {
+        margin-top: 0%;
+    }
+}
+
+.bookdetails {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+.funcblock {
+    display: flex;
+    justify-content: center;
+}
+
+.functionline {
+    display: flex;
+    width: 40%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fbtnbtn {
+    display: flex;
+    background-color: white;
+    color: #ffae00;
+    border: 4px solid #ffae00;
+    font-size: 20px;
+    border-radius: 15px;
+    padding: 5px 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.fbtnbtn:hover i {
+    animation: spin 1s ease-in-out;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.formblock {
+    margin-top: 20px;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.formblock form {
+    display: none;
+    width: 60%;
+    height: 260px;
+    background-color: rgb(255, 246, 167);
+    padding: 20px 20px;
+    border-radius: 30px 5px 30px 30px;
+    animation: fadein 0.5s ease-in-out;
+}
+
+#addBookForm.show {
+    display: block;
+}
+#remBookForm.show {
+    display: block;
+}
+
+.formblock form .input-box {
+    width: 100%;
+    height: 40px;
+}
+
+.input-box input {
+    height: 35px;
+    width: 80%;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px #777;
+    background-color: beige;
+}
+
+.input-box label {
+    font-size: larger;
+    font-family: system-ui;
+    padding-right: 1mm;
+}
+
+.sbmtbtn {
+    margin-top: 40px;
+    display: flex;
+    
+}
+
+.sbmtbtn input {
+    justify-content: center;
+    border: none;
+    font-family: system-ui;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 10px;
+    background-color: #ffae00;
+    color: white;
+    box-shadow: 2px 2px 2px #777;
+}
+
+.table-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    table-layout: fixed;
+    width: 70%;
+    border-collapse: collapse;
+}
+  
+thead th:nth-child(1) {
+    width: 2%;
+}
+  
+thead th:nth-child(2) {
+    width: 45%;
+}
+  
+thead th:nth-child(3) {
+    width: 15%;
+}
+  
+thead th:nth-child(4) {
+    width: 35%;
+}
+  
+th,
+td {
+    padding: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #ffa754;
+}
+tr:nth-child(odd) {
+    background-color: #ff8732;
+}
+th {
+    background-color: #bb5b00;
+}
+
+.bookimages {
+    max-width: 100%;
+    max-height: 300px;
+}
+
+.main-info .author{
+    text-decoration: underline;
+}
+  
+td {
+    text-align: center;
+}
+
+.flashes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff75;
+}
+
+.flashes li {
+    backdrop-filter: blur(5px);
+
+}

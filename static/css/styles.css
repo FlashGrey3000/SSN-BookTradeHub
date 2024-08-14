@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap');
+
+:root {
+    --orange-color: rgb(255, 179, 0);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+body {
+    background-image: url(/static/images/wheatfield.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.header {
+    display: flex;
+    background: rgba(200, 200, 200, 0.5);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header img {
+    display: inline-flex;
+    height: 6.5em;
+    width: auto;
+}
+
+ul {
+    display: inline-flex;
+}
+
+li {
+    display: inline;
+    padding-left: 15px;
+}
+
+li > a {
+    color: var(--orange-color);
+    text-shadow: 2px 2px 2px black;
+    font-family: system-ui;
+    font-size: 20px;
+    padding: 10px;
+}
+
+p {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.75fr;
+    grid-template-rows: 100px 1fr 1fr;
+    grid-template-areas:
+    "welcome welcome ."
+    "info info quote"
+    "btn btn .";
+}
+
+.welcome {
+    grid-area: welcome;
+    margin: auto;
+    font-family: 'Raleway', 'Times New Roman', Times, serif;
+    color: var(--orange-color);
+    text-shadow: 2px 3px 2px black;
+    font-size: 50px;
+
+}
+
+.quote {
+    grid-area: quote;
+    font-family: system-ui;
+    font-style: italic;
+    font-weight: 300;
+    margin: auto 30% auto 10%;
+}
+
+.message {
+    grid-area: info;
+    text-align: justify;
+    margin: auto 20%;
+}
+
+.startbutton {
+    grid-area: btn;
+    margin: auto auto;
+}
+
+.msg1 {
+    font-size: 36px;
+}
+
+button {
+    position: relative;
+    font-size: 20px;
+    padding: 15px 28px;
+    background-color: #bf9510;
+    text-decoration: none;
+    text-shadow: 2px 1px 2px black;
+    border: none;
+    border-radius: 0.5em;
+    color: #DEDEDE;
+    box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
+}
+  
+button::before {
+    position: absolute;
+    content: '';
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(33, 33, 33, 1) 0%, rgba(33,33,33,1) 50%, rgb(150, 101, 4) 50%, rgb(191, 160, 4) 60%);
+    border-radius: 0 0 0.5em 0;
+    box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+  
+button:hover::before {
+    width: 1.6em;
+    height: 1.6em;
+}
+  
+button:active {
+    box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+    transform: translate(0.1em, 0.1em);
+}

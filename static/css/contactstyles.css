@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap');
+
+:root {
+    --orange-color: rgb(255, 179, 0);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+
+body {
+    background-image: url(/static/images/wheatfield.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.header {
+    display: flex;
+    background: rgba(200, 200, 200, 0.5);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header img {
+    display: inline-flex;
+    height: 6.5em;
+    width: auto;
+}
+
+ul {
+    display: inline-flex;
+}
+
+li {
+    display: inline;
+    padding-left: 15px;
+}
+
+li > a {
+    color: var(--orange-color);
+    text-shadow: 2px 2px 2px black;
+    font-family: system-ui;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.main {
+    height: calc(100vh - 104px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+.container {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.5); 
+    border: 1px solid #ddd;
+    border-radius: 25px;
+}
+
+span {
+    text-decoration: line-through;
+}
+
+a {
+    text-decoration: underline;
+    color: #7b4400;
+}

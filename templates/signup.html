@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href='../static/css/signupstyles.css'>
+</head>
+<body>
+    <div class="header">
+        <a href="{{ url_for('home') }}"><img src="../static/images/BTH-logo.svg" alt="logo"></a>
+        <ul class="navbar">
+            <li><a href="{{url_for('home')}}">About</a></li>
+            <li><a href="{{url_for('contact')}}">Contact</a></li>
+            <li><a href="{{url_for('signup')}}">Sign Up</a></li>
+            <li><a href="{{url_for('login')}}">Login</a></li>
+        </ul>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <div class="main">
+        <div class="wrapper">
+            <h1>Sign Up</h1>
+            <form action="{{ url_for('signup') }}" method="post">
+                <div class="inputbox"><input name="username" type="text" placeholder="Username" required></div>
+                <div class="inputbox"><input name="email" type="text" placeholder="Email" required></div>
+                <div class="inputbox"><input name="password1" type="password" placeholder="Password" required></div>
+                <div class="inputbox"><input name="password2" type="password" placeholder="Confirm Password" required></div>
+                <button type="submit">Sign Up</button>
+                <div class="have-acc"><p>Already have an account? <a href="{{url_for('login')}}">login</a></p></div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
