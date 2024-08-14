@@ -15,6 +15,8 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 migrate = Migrate(app, db)
 
+
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
@@ -29,7 +31,6 @@ class Book(db.Model):
     author = db.Column(db.String(20), nullable=False)
     genre = db.Column(db.String(20), nullable=False)
     uploadedby = db.Column(db.String(20), nullable=False)
-    tradeinfo = db.Column(db.String(100), nullable=True)
     bookimg = db.Column(db.LargeBinary, nullable=False)
 
 
@@ -66,7 +67,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
 
-        maily.send_mailTo(email)
+        #maily.send_mailTo(email)
         print(f'ADDED USER: username: {username}, email: {email}')
 
         return redirect(url_for('login'))
@@ -165,12 +166,15 @@ def add_trade():
                 book.tradeinfo += ", " + username
                 b_owner_name = book.uploadedby
                 b_owner = User.query.filter_by(username=b_owner_name).first()
-                maily.notify_trade(b_owner.email, b_owner_name, username, book.title)
+                #maily.notify_trade(b_owner.email, b_owner_name, username, book.title)
             else:
                 flash("You have already added the book for trade!!")
                 return redirect(url_for('hub'))
         else:
-            book.tradeinfo = username
+            if book.uploadedby != username:
+                book.tradeinfo = username
+            else:
+                flash("You can't put add trade on your book!")
         
         db.session.commit()
 
