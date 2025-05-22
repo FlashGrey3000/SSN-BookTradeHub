@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 my_mail = os.getenv("MY_MAIL")
-my_pass = os.getenc("MY_PASS")
+my_pass = os.getenv("MY_PASS")
 
 OWNER = my_mail
 
